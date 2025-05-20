@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import ChoicePage from './pages/ChoicePage';
 import AddItemManually from './pages/AddItemManually';
@@ -11,7 +11,7 @@ const App = () => {
 
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route
           path="/"
@@ -45,7 +45,7 @@ const App = () => {
         />
         <Route path="/suggestions" element={<Suggestions />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 

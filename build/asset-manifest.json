@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/noteApp/static/css/main.7373cbe3.css",
-    "main.js": "/noteApp/static/js/main.47dab1f0.js",
-    "static/js/453.f0e33eac.chunk.js": "/noteApp/static/js/453.f0e33eac.chunk.js",
-    "index.html": "/noteApp/index.html",
-    "main.7373cbe3.css.map": "/noteApp/static/css/main.7373cbe3.css.map",
-    "main.47dab1f0.js.map": "/noteApp/static/js/main.47dab1f0.js.map",
-    "453.f0e33eac.chunk.js.map": "/noteApp/static/js/453.f0e33eac.chunk.js.map"
+    "main.css": "/mealMate/static/css/main.2f9dd2be.css",
+    "main.js": "/mealMate/static/js/main.696abf24.js",
+    "static/js/453.f0e33eac.chunk.js": "/mealMate/static/js/453.f0e33eac.chunk.js",
+    "index.html": "/mealMate/index.html",
+    "main.2f9dd2be.css.map": "/mealMate/static/css/main.2f9dd2be.css.map",
+    "main.696abf24.js.map": "/mealMate/static/js/main.696abf24.js.map",
+    "453.f0e33eac.chunk.js.map": "/mealMate/static/js/453.f0e33eac.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7373cbe3.css",
-    "static/js/main.47dab1f0.js"
+    "static/css/main.2f9dd2be.css",
+    "static/js/main.696abf24.js"
   ]
 }
