@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/mealMate/static/css/main.2f9dd2be.css",
-    "main.js": "/mealMate/static/js/main.696abf24.js",
+    "main.js": "/mealMate/static/js/main.e9b369dc.js",
     "static/js/453.f0e33eac.chunk.js": "/mealMate/static/js/453.f0e33eac.chunk.js",
     "index.html": "/mealMate/index.html",
     "main.2f9dd2be.css.map": "/mealMate/static/css/main.2f9dd2be.css.map",
-    "main.696abf24.js.map": "/mealMate/static/js/main.696abf24.js.map",
+    "main.e9b369dc.js.map": "/mealMate/static/js/main.e9b369dc.js.map",
     "453.f0e33eac.chunk.js.map": "/mealMate/static/js/453.f0e33eac.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.2f9dd2be.css",
-    "static/js/main.696abf24.js"
+    "static/js/main.e9b369dc.js"
   ]
 }
