@@ -33,7 +33,7 @@ const AddItemManually = ({ setFoodItems, foodItems }) => {
     <div
     className='min-h-screen w-full bg-cover bg-no-repeat bg-center text-white p-5 overflow-auto'
     style={{
-      backgroundImage: 'url("/images/buzzed-buds-_yZyX3r7-aU-unsplash.jpg")',
+      backgroundImage: 'url("./images/buzzed-buds-_yZyX3r7-aU-unsplash.jpg")',
     }}
   >
           <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 backdrop-blur-sm bg-black bg-opacity-50 p-6 md:p-10 rounded-lg w-full max-w-2xl'>

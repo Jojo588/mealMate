@@ -6,7 +6,7 @@ const SuggestionsSection = () => {
     <div
       className="bg-cover bg-center text-white py-10 px-4"
       style={{
-        backgroundImage: 'url("/images/kobby-mendez-q54Oxq44MZs-unsplash.jpg")',
+        backgroundImage: 'url("./images/kobby-mendez-q54Oxq44MZs-unsplash.jpg")',
       }}
     >
       <div className="bg-black bg-opacity-60 p-6 rounded-lg max-w-4xl mx-auto">
