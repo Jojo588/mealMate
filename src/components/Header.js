@@ -1,13 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FaUtensils } from 'react-icons/fa';
+
 
 const Header = ({ searchTerm, checkIfEmpty }) => {
 
 
   return (
     <div className="flex justify-between items-center p-4 bg-gray-200 text-md w-full fixed top-0 left-0 z-50 shadow-md h-20 max-sm:text-sm ">
-      <h1 className="capitalize font-bold text-2xl max-sm:text-xl">Meal Mate 🍽</h1>
-
+    <h1 className="capitalize font-bold text-2xl max-sm:text-xl flex items-center gap-2">
+      Meal Mate <FaUtensils />
+    </h1>
       <div className="flex gap-4 items-center max-sm:gap-2">
         <input
           type="search"

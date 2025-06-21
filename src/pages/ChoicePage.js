@@ -6,7 +6,7 @@ const ChoicePage = () => {
     <div
       className='min-h-screen w-full bg-cover bg-center text-white px-4 py-12 flex items-center justify-center'
       style={{
-        backgroundImage: 'url("./images/mike-jumapao-LZbtJSqG8E0-unsplash.jpg")',
+        backgroundImage: `url("${process.env.PUBLIC_URL}/images/mike-jumapao-LZbtJSqG8E0-unsplash.jpg")`,
       }}
     >
       <div className='bg-black bg-opacity-60 backdrop-blur-sm p-8 md:p-12 rounded-2xl max-w-3xl w-full text-center space-y-6 shadow-xl'>
