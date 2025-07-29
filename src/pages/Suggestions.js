@@ -1,43 +1,54 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
-export default function Suggestions() {
+export default function Suggestions({ recipes, setRecipes }) {
   const [items, setItems] = useState([]);
-  const [recipes, setRecipes] = useState([]);
+  const prevItemsRef = useRef(null);
 
-  useEffect(() => {
-    const stored = JSON.parse(localStorage.getItem("fridgeItems")) || [];
-    setItems(stored);
+  const fetchRecipes = async (fridgeItems) => {
+    try {
+      const response = await fetch(
+        "https://www.themealdb.com/api/json/v1/1/search.php?s="
+      );
+      const data = await response.json();
 
-    const fetchRecipes = async () => {
-      try {
-        const response = await fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=');
-        const data = await response.json();
-        
-        if (data.meals) {
-          const ingredients = stored.map((item) => item.itemName?.toLowerCase()).filter(Boolean);
+      if (data.meals) {
+        const ingredients = fridgeItems
+          .map((item) => item.itemName?.toLowerCase())
+          .filter(Boolean);
 
-          // Filter meals that have matching ingredients
-          const matching = data.meals.filter((meal) => {
-            const mealIngredients = [];
-            for (let i = 1; i <= 20; i++) {
-              const ingredient = meal[`strIngredient${i}`];
-              if (ingredient) {
-                mealIngredients.push(ingredient.toLowerCase());
-              }
+        const matching = data.meals.filter((meal) => {
+          const mealIngredients = [];
+          for (let i = 1; i <= 20; i++) {
+            const ingredient = meal[`strIngredient${i}`];
+            if (ingredient) {
+              mealIngredients.push(ingredient.toLowerCase());
             }
-            return mealIngredients.some((ing) => ingredients.includes(ing));
-          });
+          }
+          return mealIngredients.some((ing) => ingredients.includes(ing));
+        });
 
-          setRecipes(matching);
-        } else {
-          setRecipes([]);
-        }
-      } catch (error) {
-        console.log('Error fetching data:', error);
+        setRecipes(matching);
+      } else {
+        setRecipes([]);
       }
-    };
+    } catch (error) {
+      console.log("Error fetching data:", error);
+    }
+  };
 
-    fetchRecipes();
+       useEffect(() => {
+        const interval = setInterval(() => {
+        const stored = JSON.parse(localStorage.getItem("fridgeItems")) || [];
+
+      // Only fetch again if items have changed
+      if (JSON.stringify(stored) !== JSON.stringify(prevItemsRef.current)) {
+        prevItemsRef.current = stored;
+        setItems(stored);
+        fetchRecipes(stored);
+          }
+        }, 2000); // Check every 2 seconds
+
+    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -59,7 +70,9 @@ export default function Suggestions() {
           ))}
         </div>
       ) : (
-        <p className="text-gray-600">No recipes match your current food items.</p>
+        <p className="text-gray-600">
+          No recipes match your current food items.
+        </p>
       )}
     </div>
   );

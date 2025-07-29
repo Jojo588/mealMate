@@ -13,11 +13,10 @@ const AddItemManually = ({ setFoodItems, foodItems }) => {
   function handleSubmit(e) {
     e.preventDefault();
 
-
     const existing = JSON.parse(localStorage.getItem("fridgeItems")) || [];
     localStorage.setItem("fridgeItems", JSON.stringify([...existing, manualEntry]));
     
-    setFoodItems([...foodItems, manualEntry]);  // Add new item to list
+    setFoodItems([...foodItems, manualEntry]);
     navigate('/');
   }
 

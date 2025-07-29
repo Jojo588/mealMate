@@ -17,7 +17,7 @@ const SuggestionsSection = () => {
         </p>
 
         <Link to="/suggestions">
-          <button className="bg-blue-500 text-white px-4 py-2 rounded-xl hover:bg-blue-600">
+          <button className="bg-[#A3B18A] text-white px-4 py-2 rounded-xl hover:bg-[#99b46a]">
             🍽 Get Meal Suggestions
           </button>
         </Link>
