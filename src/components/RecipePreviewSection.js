@@ -4,6 +4,7 @@ import { Input } from "../components/ui/Input"
 import { Card, CardContent } from "../components/ui/Card"
 import { Badge } from "../components/ui/Badge"
 import { Search, Clock, Users } from "lucide-react"
+import { Link } from "react-router-dom"
 
 function RecipePreviewSection() {
   const [searchQuery, setSearchQuery] = useState("")
@@ -53,7 +54,8 @@ const fetchRecipes = async (query = searchQuery) => {
   }
 }
 
-function handleSubmit(){
+function handleSubmit(e){
+  e.preventDefault()
   fetchRecipes()
 }
 
@@ -133,7 +135,7 @@ function handleSubmit(){
                   </div>
                 </div>
 
-                <div className="space-y-2">
+                <div className="space-y-2 p-1 sm: h-32">
                   <p className="text-sm font-medium text-[#333333]">
                     Ingredients:
                   </p>
@@ -149,10 +151,11 @@ function handleSubmit(){
                     ))}
                   </div>
                 </div>
-
-                <Button className="w-full bg-[#A3B18A] hover:bg-[#588157] text-white rounded-lg">
-                  Cook Now
-                </Button>
+                <Link to={`/recipe/${recipe.id}`}>
+                  <Button className="w-full bg-[#A3B18A] hover:bg-[#588157] text-white rounded-lg">
+                    Cook Now
+                  </Button>
+                </Link>
               </CardContent>
             </Card>
           ))}

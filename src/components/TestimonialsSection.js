@@ -11,7 +11,7 @@ function TestimonialsSection() {
       avatar: "/placeholder.svg",
       content:
         "Meal Mate has completely changed how I manage my kitchen. I've reduced food waste by 80% and discovered so many new recipes!",
-      rating: 5,
+      rating: 4,
     },
     {
       name: "Mike Chen",
@@ -49,14 +49,14 @@ function TestimonialsSection() {
               key={index}
               className="border-0 shadow-lg hover:shadow-xl transition-shadow duration-300 bg-white"
             >
-              <CardContent className="p-8 space-y-6">
+              <CardContent className="p-8 space-y-4">
                 <div className="flex space-x-1">
                   {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="h-5 w-5 fill-[#FFB703] text-[#FFB703]" />
+                    <Star key={i} className="h-5 w-5 fill-[#FFB703] text-[#FFB703] mt-2" />
                   ))}
                 </div>
 
-                <blockquote className="text-[#666666] leading-relaxed italic">
+                <blockquote className="text-[#666666] leading-relaxed italic h-32">
                   "{testimonial.content}"
                 </blockquote>
 

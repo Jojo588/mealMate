@@ -72,9 +72,9 @@ export default function RecipesPage() {
     }
   };
 
-  function handleSubmit(){
-    handleSearch()
-  }
+  // function handleSubmit(){
+  //   handleSearch()
+  // }
 
   const handleLoadMore = () => {
     setLoading(true);

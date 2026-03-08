@@ -1,7 +1,8 @@
 import React from "react";
-import { ChefHat, Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
+import { Button } from "./ui/Button";
+import { ChefHat, Facebook, Twitter, Instagram, Linkedin, LogOut } from "lucide-react";
 
-function Footer({ activeNavChoice }) {
+function Footer({ activeNavChoice, isLoggedIn, handleLogout }) {
   const footerLinks = {
     product: [
       { name: "Features", href: "#features" },
@@ -17,6 +18,9 @@ function Footer({ activeNavChoice }) {
       { name: "Privacy Policy", href: "#privacy_policy" },
       { name: "Terms of Service", href: "#terms_of_service" },
       { name: "Cookie Policy", href: "#cookie_policy" },
+      ...(isLoggedIn
+    ? [{ name: "Logout", icon: LogOut, onClick: handleLogout }]
+    : []),
     ],
   };
 
@@ -61,21 +65,34 @@ function Footer({ activeNavChoice }) {
               </h3>
               <ul className="space-y-3">
                 {links.map((link) => {
-                  const slug = link.name.toLowerCase().replace(/ /g, "_");
-                  const isActive = activeNavChoice === slug;
-                  return (
-                    <li key={link.name}>
-                      <a
-                        href={link.href}
-                        className={`text-gray-300 hover:text-white transition-colors ${
-                          isActive ? "text-white font-semibold" : ""
-                        }`}
-                      >
-                        {link.name}
-                      </a>
-                    </li>
-                  );
-                })}
+  const slug = link.name.toLowerCase().replace(/ /g, "_");
+  const isActive = activeNavChoice === slug;
+  const Icon = link.icon;
+
+  return (
+    <li key={link.name}>
+      {link.onClick ? (
+        <div
+          variant="ghost"
+          onClick={link.onClick}
+          className="text-red-500 hover:text-red-600 cursor-pointer"
+        >
+          {Icon && <Icon className="inline mr-2 h-4 w-4" />}
+          {link.name}
+        </div>
+      ) : (
+        <a
+          href={link.href}
+          className={`text-gray-300 hover:text-white transition-colors ${
+            isActive ? "text-white font-semibold" : ""
+          }`}
+        >
+          {link.name}
+        </a>
+      )}
+    </li>
+  );
+})}
               </ul>
             </div>
           ))}
