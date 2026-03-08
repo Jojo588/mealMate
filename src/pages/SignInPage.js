@@ -44,7 +44,7 @@ export default function SignInPage({ data, setIsLoggedIn }) {
   return (
     <div className="min-h-screen bg-[#FAF9F6]">
 
-      <main className="py-20">
+      <main className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full">
         <div className="container px-4">
           <div className="max-w-md mx-auto">
             <Card className="border-2 border-[#A3B18A]/20 shadow-2xl">

@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Menu, ChefHat, LogOut, Home, Info, PlayCircle, UtensilsCrossed, BookOpen, Briefcase, Mail, Cookie, ShieldCheck, ScrollText, HelpCircle,} from "lucide-react";
 import { Button } from "../components/ui/Button";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription} from "../components/ui/Sheet";
+import Logout from "./Logout";
 
 function MainHeader({ activeNavChoice, isLoggedIn, setIsLoggedIn }) {
   const [isOpen, setIsOpen] = useState(false);
-  const navigate = useNavigate();
+  const [showLogout, setShowLogout] = useState(false);
 
   const navItems = [
     { name: "Home", path: "/" },
@@ -43,13 +44,7 @@ function MainHeader({ activeNavChoice, isLoggedIn, setIsLoggedIn }) {
 
 
   const handleLogout = () => {
-    const confirmLogout = window.confirm("Are you sure you want to logout?");
-    if (confirmLogout) {
-      setIsLoggedIn(false);
-      localStorage.setItem('isLoggedIn', 'false');
-      localStorage.removeItem('mealMateUserData');
-      navigate('/');
-    }
+    setShowLogout(true)
   };
 
   return (
@@ -180,6 +175,11 @@ function MainHeader({ activeNavChoice, isLoggedIn, setIsLoggedIn }) {
           </SheetContent>
         </Sheet>
       </div>
+      <Logout
+      showLogout= {showLogout}
+      setIsLoggedIn={setIsLoggedIn}
+      setShowLogout={setShowLogout}
+      />
     </header>
   );
 }

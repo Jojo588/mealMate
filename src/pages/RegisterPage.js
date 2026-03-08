@@ -5,13 +5,17 @@ import { Input } from "../components/ui/Input";
 import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/Card";
 import { Separator } from "../components/ui/Separator";
 import { Mail, Lock, User, Chrome, Eye, EyeOff } from "lucide-react";
+import SignUpPopup from "../components/SignUpPopup";
 
-export default function RegisterPage({ setData}) {
+export default function RegisterPage({ setData }) {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const navigate = useNavigate();
 
-
+// state to control sign up pop up
+  const [showSignupPopup,setShowSignupPopup] = useState(false);
+  
+// state to control signup entry contents
   const [signupEntry, setSignupEntry] = useState({
     firstName: "",
     lastName: "",
@@ -33,15 +37,23 @@ export default function RegisterPage({ setData}) {
       ...prev,
       { email: signupEntry.email, password: signupEntry.createPassword }
     ]);
-    navigate('/signin');
-    alert(`Hello ${signupEntry.firstName}, you have successfully signed up!`);
+    setShowSignupPopup(true);
   }
 
-
+function handleCloseSignupPop(){
+    setShowSignupPopup(false);
+    navigate('/signin');
+}
 
 
   return (
     <div className="min-h-screen bg-[#FAF9F6]">
+      <SignUpPopup
+      signupEntry={signupEntry}
+      showSignupPopup={showSignupPopup}
+      setShowSignupPopup={setShowSignupPopup}
+      handleCloseSignupPop={handleCloseSignupPop}
+      />
 
       <main className="py-20">
         <div className="container px-4">

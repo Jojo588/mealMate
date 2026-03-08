@@ -136,10 +136,12 @@ const getHeaderChoiceFromPath = (path) => {
           <Route path="FAQs" element={
               <FAQSPage />
             } />
-          <Route path="register" element={<RegisterPage data={data} setData={setData} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>} />
-          <Route path="signin" element={<SigninPage data={data} setData={setData} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>} />
         </Route>
 
+        {/* routes without a header and footer */}
+
+        <Route path="register" element={<RegisterPage data={data} setData={setData} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>} />
+        <Route path="signin" element={<SigninPage data={data} setData={setData} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>} />
         <Route
           path="/track_expiry_dates"
           element={
