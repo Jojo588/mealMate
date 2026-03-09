@@ -1,12 +1,43 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Menu, ChefHat, LogOut, Home, Info, PlayCircle, UtensilsCrossed, BookOpen, Briefcase, Mail, Cookie, ShieldCheck, ScrollText, HelpCircle,} from "lucide-react";
+import {
+  Menu,
+  ChefHat,
+  LogOut,
+  Home,
+  Info,
+  PlayCircle,
+  UtensilsCrossed,
+  BookOpen,
+  Briefcase,
+  Mail,
+  Cookie,
+  ShieldCheck,
+  ScrollText,
+  HelpCircle,
+} from "lucide-react";
+
 import { Button } from "../components/ui/Button";
-import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription} from "../components/ui/Sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+  SheetTitle,
+  SheetDescription,
+} from "../components/ui/Sheet";
+
 import Logout from "./Logout";
 
-function MainHeader({ activeNavChoice, isLoggedIn, setIsLoggedIn, handleLogout, showLogout, setShowLogout}) {
+function MainHeader({
+  activeNavChoice,
+  isLoggedIn,
+  setIsLoggedIn,
+  handleLogout,
+  showLogout,
+  setShowLogout,
+}) {
   const [isOpen, setIsOpen] = useState(false);
+  const [animateNav, setAnimateNav] = useState(false);
 
   const navItems = [
     { name: "Home", path: "/" },
@@ -14,9 +45,10 @@ function MainHeader({ activeNavChoice, isLoggedIn, setIsLoggedIn, handleLogout, 
     { name: "Recipes", path: "/recipes" },
     { name: "Contact", path: "/contact" },
   ];
-    const subNavItems = [
+
+  const subNavItems = [
     { name: "Home", path: "/", icon: <Home /> },
-    { name: "About", path: "/about", icon: <Info />},
+    { name: "About", path: "/about", icon: <Info /> },
     { name: "Start Tracking", path: "/trackFoodExpiry", icon: <PlayCircle /> },
     { name: "Recipe Suggestions", path: "/suggestions", icon: <UtensilsCrossed /> },
     { name: "Recipes", path: "/recipes", icon: <BookOpen /> },
@@ -28,49 +60,68 @@ function MainHeader({ activeNavChoice, isLoggedIn, setIsLoggedIn, handleLogout, 
     { name: "FAQs", path: "/FAQs", icon: <HelpCircle /> },
   ];
 
-   useEffect(() => {
+  useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 765) {
         setIsOpen(false);
       }
     };
-  
+
     window.addEventListener("resize", handleResize);
     handleResize();
-  
+
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-
+  /* Trigger nav animation when login happens */
+  useEffect(() => {
+    if (isLoggedIn) {
+      setAnimateNav(true);
+      const timer = setTimeout(() => setAnimateNav(false), 500);
+      return () => clearTimeout(timer);
+    }
+  }, [isLoggedIn]);
 
   return (
     <header className="fixed top-0 z-50 w-full border-b border-[#A3B18A]/20 bg-[#FAF9F6]/95 backdrop-blur supports-[backdrop-filter]:bg-[#FAF9F6]/60">
       <div className="container flex h-16 items-center justify-between px-4 md:px-8">
-        <div className={`flex justify-between ${isLoggedIn ? "pr-40 w-full" : "w-4/6"}`}>
-        {/* Logo */}
-        <Link to="/" className="flex items-center space-x-2">
-          <ChefHat className="h-8 w-8 text-[#A3B18A]" />
-          <span className="text-xl font-bold text-[#333333]">Meal Mate</span>
-        </Link>
+        <div
+          className={`flex justify-between transition-all duration-500 ${
+            isLoggedIn ? "pr-40 w-full" : "w-4/6"
+          }`}
+        >
+          {/* Logo */}
+          <Link to="/" className="flex items-center space-x-2">
+            <ChefHat className="h-8 w-8 text-[#A3B18A]" />
+            <span className="text-xl font-bold text-[#333333]">Meal Mate</span>
+          </Link>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center space-x-8">
-          {navItems.map((item) => (
-            <Link
-              key={item.name}
-              to={item.path}
-              className={`text-[#333333] font-medium transition-colors hover:text-[#A3B18A] ${
-                activeNavChoice === item.name.toLowerCase().replace(/\s+/g, "_")
-                  ? "text-[#588157] underline underline-offset-4"
-                  : ""
-              }`}
-            >
-              {item.name}
-            </Link>
-          ))}
-        </nav>
+          {/* Desktop Navigation */}
+          <nav className="hidden lg:flex items-center space-x-8 transition-all duration-500">
+            {navItems.map((item, index) => (
+              <Link
+                key={item.name}
+                to={item.path}
+                style={{ transitionDelay: `${index * 70}ms` }}
+                className={`font-medium text-[#333333] hover:text-[#A3B18A]
+                transition-all duration-500 ease-out
+                ${
+                  animateNav
+                    ? "opacity-0 -translate-x-2"
+                    : "opacity-100 translate-x-0"
+                }
+                ${
+                  activeNavChoice ===
+                  item.name.toLowerCase().replace(/\s+/g, "_")
+                    ? "text-[#588157] underline underline-offset-4"
+                    : ""
+                }`}
+              >
+                {item.name}
+              </Link>
+            ))}
+          </nav>
         </div>
-
 
         {/* Desktop Auth Buttons */}
         <div className="hidden lg:flex items-center space-x-4">
@@ -86,6 +137,7 @@ function MainHeader({ activeNavChoice, isLoggedIn, setIsLoggedIn, handleLogout, 
                   Sign In
                 </Button>
               </Link>
+
               <Link to="/register">
                 <Button
                   className={`bg-[#FFB703] duration-300 hover:bg-[#588157] text-white rounded-full px-6 ${
@@ -96,8 +148,7 @@ function MainHeader({ activeNavChoice, isLoggedIn, setIsLoggedIn, handleLogout, 
                 </Button>
               </Link>
             </>
-          )
-          }
+          )}
         </div>
 
         {/* Mobile Menu */}
@@ -107,21 +158,22 @@ function MainHeader({ activeNavChoice, isLoggedIn, setIsLoggedIn, handleLogout, 
               <Menu className="h-6 w-6" />
             </Button>
           </SheetTrigger>
+
           <SheetContent side="right" className="bg-white p-6 space-y-6">
             <div className="mt-5 flex flex-col space-y-6 overflow-y-auto max-h-[calc(100vh-150px)] hide-scrollbar">
               <SheetTitle className="visually-hidden">Main Menu</SheetTitle>
-                <SheetDescription className="visually-hidden">
-                  Select a page to visit or manage your account.
-                </SheetDescription>
+
+              <SheetDescription className="visually-hidden">
+                Select a page to visit or manage your account.
+              </SheetDescription>
 
               {subNavItems.map((item) => (
-                
                 <Link
                   key={item.name}
                   to={item.path}
-                  className={`flex gap-3 text-[#333333] font-medium transition-colors hover:text-[#A3B18A] ${
-                    activeNavChoice === item.name.toLowerCase().replace(/\s+/g, "_")
-
+                  className={`flex gap-3 text-[#333333] font-medium hover:text-[#A3B18A] transition-colors ${
+                    activeNavChoice ===
+                    item.name.toLowerCase().replace(/\s+/g, "_")
                       ? "text-[#588157] underline underline-offset-4"
                       : ""
                   }`}
@@ -131,7 +183,9 @@ function MainHeader({ activeNavChoice, isLoggedIn, setIsLoggedIn, handleLogout, 
                   {item.name}
                 </Link>
               ))}
-              <div className="flex gap-3 border-t border-[#A3B18A]/20 pt-6 absolute bottom-0 left-1/2 -translate-x-1/2 -translate-y-1/2 ">
+
+              {/* Mobile Auth */}
+              <div className="flex gap-3 border-t border-[#A3B18A]/20 pt-6 absolute bottom-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
                 {!isLoggedIn ? (
                   <>
                     <Link to="/signin" onClick={() => setIsOpen(false)}>
@@ -142,6 +196,7 @@ function MainHeader({ activeNavChoice, isLoggedIn, setIsLoggedIn, handleLogout, 
                         Sign In
                       </Button>
                     </Link>
+
                     <Link to="/register" onClick={() => setIsOpen(false)}>
                       <Button className="w-full bg-[#FFB703] hover:bg-[#588157] text-white">
                         Register
@@ -166,10 +221,12 @@ function MainHeader({ activeNavChoice, isLoggedIn, setIsLoggedIn, handleLogout, 
           </SheetContent>
         </Sheet>
       </div>
+
+      {/* Logout Modal */}
       <Logout
-      showLogout= {showLogout}
-      setIsLoggedIn={setIsLoggedIn}
-      setShowLogout={setShowLogout}
+        showLogout={showLogout}
+        setIsLoggedIn={setIsLoggedIn}
+        setShowLogout={setShowLogout}
       />
     </header>
   );

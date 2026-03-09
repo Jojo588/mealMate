@@ -120,7 +120,7 @@ export default function SignInPage({ data, setIsLoggedIn }) {
                       <input type="checkbox" className="rounded border-[#A3B18A]/20" />
                       <span className="text-[#666666]">Remember me</span>
                     </label>
-                    <Link to="#" className="text-sm text-[#A3B18A] hover:underline">
+                    <Link to="/forgotten_password" className="text-sm text-[#A3B18A] hover:underline">
                       Forgot password?
                     </Link>
                   </div>

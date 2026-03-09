@@ -53,54 +53,70 @@ const AutoGenExpirPage = ({ setFoodItems, foodItems }) => {
 
   return (
     <div
-      className='min-h-screen w-full bg-cover bg-center text-white p-5 overflow-auto'
+      className="relative min-h-screen w-full bg-cover bg-center flex items-center justify-center px-6 py-12"
       style={{
         backgroundImage: `url("${process.env.PUBLIC_URL}/images/charlesdeluvio-oLklDppuROU-unsplash.jpg")`,
       }}
     >
-      <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 backdrop-blur-sm bg-black bg-opacity-50 p-6 md:p-10 rounded-lg w-full max-w-2xl'>
-        <h1 className="text-xl font-bold mb-4 capitalize">Add your food item here</h1>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+      {/* Background overlay */}
+      <div className="absolute inset-0 bg-black/40"></div>
+
+      {/* Form card */}
+      <div className="relative w-full max-w-xl bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl shadow-2xl p-8 md:p-10 text-white">
+
+        <h1 className="text-2xl md:text-3xl font-bold mb-6 text-center tracking-tight capitalize">
+          Add Your Food Item
+        </h1>
+
+        <form onSubmit={handleSubmit} className="space-y-5">
+
           <div>
-            <label className="block font-medium" htmlFor="itemName">Item Name</label>
+            <label className="block text-sm font-medium text-white/90">
+              Item Name
+            </label>
             <input
               id="itemName"
               type="text"
-              placeholder="Enter item here..."
+              placeholder="Enter item name..."
               name="itemName"
               onChange={handleChange}
               value={autoGenEntry.itemName}
               required
-              className="w-full p-2 rounded border mt-1 focus:outline-none focus:ring-2 focus:ring-green-400 text-black"
+              className="w-full mt-2 px-4 py-3 rounded-xl bg-white/90 text-gray-800 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition"
             />
           </div>
 
           <div>
-            <label className="block font-medium" htmlFor="quantity">Quantity</label>
+            <label className="block text-sm font-medium text-white/90">
+              Quantity
+            </label>
             <input
               min="1"
               id="quantity"
               type="number"
-              placeholder="Enter quantity here..."
+              placeholder="Enter quantity..."
               name="quantity"
               onChange={handleChange}
               value={autoGenEntry.quantity}
               required
-              className="w-full p-2 rounded border mt-1 focus:outline-none focus:ring-2 focus:ring-green-400 text-black"
+              className="w-full mt-2 px-4 py-3 rounded-xl bg-white/90 text-gray-800 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition"
             />
           </div>
 
           <button
             type="submit"
-            className="bg-green-600 text-white px-4 py-2 rounded-xl hover:bg-green-700 transition duration-200 mt-4"
+            className="w-full mt-4 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-lg shadow-lg hover:shadow-xl transition duration-300 hover:scale-[1.02]"
           >
             Save Item
           </button>
+
         </form>
       </div>
+
     </div>
   );
 };
 
 export default AutoGenExpirPage;
+

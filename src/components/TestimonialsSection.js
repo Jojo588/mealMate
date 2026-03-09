@@ -56,7 +56,7 @@ function TestimonialsSection() {
                   ))}
                 </div>
 
-                <blockquote className="text-[#666666] leading-relaxed italic h-32">
+                <blockquote className="text-[#666666] leading-relaxed italic sm:h-32">
                   "{testimonial.content}"
                 </blockquote>
 

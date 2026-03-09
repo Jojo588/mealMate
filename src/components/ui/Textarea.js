@@ -1,5 +1,5 @@
 import React from "react"
-import { cn } from "../../lib/cn" // Update the import path based on your actual file structure
+import { cn } from "../../lib/cn"
 
 const Textarea = React.forwardRef(({ className, ...props }, ref) => {
   return (

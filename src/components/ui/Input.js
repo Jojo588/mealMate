@@ -1,5 +1,5 @@
 import React from "react"
-import { cn } from "../../lib/cn.js"; // ✅ Note: "../../", not "../"
+import { cn } from "../../lib/cn.js";
 
 const Input = React.forwardRef(({ className, type = "text", ...props }, ref) => {
   return (

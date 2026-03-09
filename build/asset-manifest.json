@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/mealMate/static/css/main.f1ba2bed.css",
-    "main.js": "/mealMate/static/js/main.004bb921.js",
+    "main.css": "/mealMate/static/css/main.a5290ddf.css",
+    "main.js": "/mealMate/static/js/main.f3295aa9.js",
     "static/js/453.f0e33eac.chunk.js": "/mealMate/static/js/453.f0e33eac.chunk.js",
     "static/media/team-engineers-working-server-farm-using-pcs-analyze-data.jpg": "/mealMate/static/media/team-engineers-working-server-farm-using-pcs-analyze-data.9c96bff9f7f20c6bc268.jpg",
     "index.html": "/mealMate/index.html",
-    "main.f1ba2bed.css.map": "/mealMate/static/css/main.f1ba2bed.css.map",
-    "main.004bb921.js.map": "/mealMate/static/js/main.004bb921.js.map",
+    "main.a5290ddf.css.map": "/mealMate/static/css/main.a5290ddf.css.map",
+    "main.f3295aa9.js.map": "/mealMate/static/js/main.f3295aa9.js.map",
     "453.f0e33eac.chunk.js.map": "/mealMate/static/js/453.f0e33eac.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f1ba2bed.css",
-    "static/js/main.004bb921.js"
+    "static/css/main.a5290ddf.css",
+    "static/js/main.f3295aa9.js"
   ]
 }

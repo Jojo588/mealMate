@@ -23,6 +23,7 @@ import Suggestions from './pages/Suggestions.js';
 import DashboardPreviewSection from './components/DashboardPreviewSection.js';
 import NotFoundPage from './pages/NotFoundPage.js';
 import ViewRecipePage from "./pages/ViewRecipePage";
+import ForgottenPassword from './pages/ForgottenPassword.js';
 import PrivateRoute from './components/PrivateRoute.js'
 
 const AppRoutes = () => {
@@ -136,11 +137,20 @@ const getHeaderChoiceFromPath = (path) => {
           <Route path="FAQs" element={
               <FAQSPage />
             } />
+            <Route path="forgotten_password" element={<ForgottenPassword />} />
         </Route>
 
         {/* routes without a header and footer */}
 
-        <Route path="register" element={<RegisterPage data={data} setData={setData} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>} />
+        <Route path="register" element={
+          <RegisterPage
+           data={data}
+           setData={setData}
+           isLoggedIn={isLoggedIn}
+           setIsLoggedIn={setIsLoggedIn}
+          />}
+         />
+
         <Route path="signin" element={<SigninPage data={data} setData={setData} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>} />
         <Route
           path="/track_expiry_dates"
